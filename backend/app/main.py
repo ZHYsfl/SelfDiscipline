@@ -41,5 +41,5 @@ app.add_middleware(
 # Routers
 app.include_router(api_v1_router, prefix="/api/v1")
 
-# Static files
-app.mount("/static", StaticFiles(directory=str(settings.static_dir)), name="static")
+# Static files (allow startup even if dir doesn't exist yet; lifespan creates it)
+app.mount("/static", StaticFiles(directory=str(settings.static_dir), check_dir=False), name="static")
