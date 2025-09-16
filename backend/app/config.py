@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     database_url: str = Field(default="sqlite:///./data/app.db", alias="DATABASE_URL")
 
     # CORS
-    cors_origins: List[str] = Field(default_factory=lambda: ["*"], alias="CORS_ORIGINS")
+    cors_origins: str | List[str] = Field(default="*", alias="CORS_ORIGINS")
 
     # Derived paths
     @property
